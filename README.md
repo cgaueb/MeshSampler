@@ -20,13 +20,13 @@ Samples an input mesh and generates and stores surface samples in an out-of-core
 
 **-f FILTER**: Texture sampling magnification filter. FILTER:
 
-	   **nearest**: samples the closest texel.
+**nearest**: samples the closest texel.
            
-	   **linear**: linearly blend the 4 closest texels. Default filter.
+**linear**: linearly blend the 4 closest texels. Default filter.
 	   
-	  **sharp**: blend the 4 closest texels with cosine interpolation. 
+**sharp**: blend the 4 closest texels with cosine interpolation. 
           
-	   **smooth**: 16-tap random texel selection with cosine distance weighting.
+**smooth**: 16-tap random texel selection with cosine distance weighting.
 	
  ### Example
  
