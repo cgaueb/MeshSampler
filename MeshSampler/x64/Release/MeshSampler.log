@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(500,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  sampling.cpp
+D:\Projects\MeshSampler\MeshSampler\sampling.cpp(103,49): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+D:\Projects\MeshSampler\MeshSampler\sampling.cpp(108,48): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+D:\Projects\MeshSampler\MeshSampler\sampling.cpp(113,50): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Generating code
+  2 of 1051 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MeshSampler.vcxproj -> D:\Projects\MeshSampler\bin\MeshSampler.exe
