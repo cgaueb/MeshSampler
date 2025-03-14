@@ -10,6 +10,13 @@
 #define TEXSAMPLING_SHARP 2
 #define TEXSAMPLING_SMOOTH 3
 
-#define PI     3.14159265f
+#define SAMPLER_MODE_UNIFORM 1
+#define SAMPLER_MODE_STRATIFIED 2
+
+#define MASK_VERTICES 1
+#define MASK_COLORS 2
+#define MASK_NORMALS 4
+
+#define PI 3.14159265f
 #define LERP(A,B,s) ((A)*(1-s)+(B)*s)
 #define COSERP(A,B,t) (LERP(A,B,(1.0f-cosf(t*PI))/2.0f))

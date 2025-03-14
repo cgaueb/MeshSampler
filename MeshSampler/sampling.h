@@ -2,18 +2,11 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include "ply.h"
+#include "defs.h"
 
 float sampleUniform0to1();
 
 glm::vec3 sampleUnitSphere();
-
-void generateUniformSurfaceSamples(std::vector<glm::vec3> & samples, std::vector<glm::vec3> & normals, std::vector<uint32_t> & trids, class Mesh & mesh, int n);
-
-void generateStratifiedSurfaceSamples(std::vector<glm::vec3> & samples, std::vector<glm::vec3> & normals, std::vector<uint32_t> & trids, class Mesh & mesh, float strat_size, bool build_accel_struct = true);
-
-
-#define SAMPLER_MODE_UNIFORM 1
-#define SAMPLER_MODE_STRATIFIED 2
 
 
 class MeshSampler

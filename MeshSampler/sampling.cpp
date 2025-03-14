@@ -20,26 +20,6 @@ glm::vec3 sampleUnitSphere()
 	return glm::normalize(v - glm::vec3(0.5f));
 }
 
-void generateUniformSurfaceSamples(std::vector<glm::vec3> & samples, std::vector<glm::vec3> & normals, std::vector<uint32_t> & trids, Mesh & mesh, int n)
-{
-	samples.resize(n);
-	normals.resize(n);
-	trids.resize(n, UINT32_MAX);
-
-#pragma omp parallel for
-	for (int i = 0; i < n; i++)
-	{
-		mesh.sampleAreaWeighted(samples[i], normals[i], trids[i]);
-	}
-}
-
-
-
-void generateStratifiedSurfaceSamples(std::vector<glm::vec3> & samples, std::vector<glm::vec3> & normals, std::vector<uint32_t> & trids, Mesh & mesh, float strat_size, bool build_accel_struct)
-{
-	
-}
-
 void MeshSampler::computeChunkSamples()
 {
 	std::bitset<8> attribs = m_attribs;
