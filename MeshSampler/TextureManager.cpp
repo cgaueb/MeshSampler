@@ -181,7 +181,9 @@ glm::vec4 Texture::sample(int mode, float u, float v)
 			float theta = 2 * PI * sampleUniform0to1();
 			float sx = x + r * cos(theta);
 			float sy = y + r * sin(theta);
-			color += getTexel((int)floor(sx), (int)floor(sy));
+			sx /= m_width;
+			sy /= m_height;
+			color += sample(TEXSAMPLING_LINEAR, sx, sy);
 		}
 		return color / 16.0f;
 		break;
