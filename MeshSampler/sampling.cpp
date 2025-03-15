@@ -29,7 +29,8 @@ void MeshSampler::computeChunkSamples()
 bool MeshSampler::writeChunk()
 {
 	bool res;
-	res = plyAppendPoints(m_output+".TMP", m_attribs, &m_vertices, &m_colors, &m_normals);
+	res = plyUpdateHeader(m_output, m_total_samples);
+	res *= plyAppendPoints(m_output, m_attribs, m_vertices, m_colors, m_normals);
 	m_vertices.clear();
 	m_colors.clear();
 	m_normals.clear();
@@ -121,6 +122,10 @@ bool MeshSampler::sample()
 {
 	bool ok = true;
 
+	if (!plyInit(m_output, m_attribs, 0))
+		return false;
+
+
 	if (m_mode == SAMPLER_MODE_UNIFORM)
 		ok = sampleUniform();
 	else
@@ -130,49 +135,11 @@ bool MeshSampler::sample()
 
 	if (!ok)
 	{
-		printf("Error while creating the TMP file\n");
+		printf("Error while creating the output file\n");
 		return false;
 	}
 
-	if (!plyInit(m_output, m_attribs, m_total_samples))
-		return false;
-
-	FILE* fp_in = nullptr;
-	fopen_s(&fp_in, (m_output+".TMP").c_str(), "rb");
-	if (!fp_in)
-	{
-		printf("Error while reading TMP file\n");
-		return false;
-	}
-	FILE* fp_out = nullptr;
-	fopen_s(&fp_out, (m_output).c_str(), "ab");
-	if (!fp_out)
-	{
-		printf("Error while finalizing PLY file\n");
-		return false;
-	}
 	
-	int chunk_size = 0;
-	if (m_attribs & MASK_VERTICES)
-		chunk_size += 3 * sizeof(float);
-	if (m_attribs & MASK_COLORS)
-		chunk_size += 3 * sizeof(char);
-	if (m_attribs & MASK_NORMALS)
-		chunk_size += 3 * sizeof(float);
-	int num_chunks = 1000;
-	
-	char* buf = new char[chunk_size*num_chunks];
-	while (!feof(fp_in))
-	{
-		size_t cnt = fread_s(buf, chunk_size * num_chunks, chunk_size, num_chunks, fp_in);
-		fwrite(buf, chunk_size, cnt, fp_out);
-	}
-
-	delete[] buf;
-	fclose(fp_in);
-	fclose(fp_out);
-
-	std::filesystem::remove(std::filesystem::path(m_output+".TMP"));
 	printf("done.\n");
 
 }
