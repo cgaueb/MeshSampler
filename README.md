@@ -4,7 +4,7 @@ MeshSampler [OPTIONS] filename
 
 ### Description 
 
-Samples an input mesh and generates and stores surface samples in an out-of-core manner, to support very large numbers of samples. Results are written to a PLY file with an extension ".sampled.ply". Double the disk space occupied by the final PLY file is required during operation.
+Samples an input mesh and generates and stores surface samples in an out-of-core manner, to support very large numbers of samples. Results are written to a PLY file with an extension ".sampled.ply". 
 	
 **filename**: an OBJ file to load and sample.
 
