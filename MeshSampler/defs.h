@@ -14,8 +14,9 @@
 #define SAMPLER_MODE_STRATIFIED 2
 
 #define MASK_VERTICES 1
-#define MASK_COLORS 2
-#define MASK_NORMALS 4
+#define MASK_NORMALS 2
+#define MASK_COLORS 4
+
 
 #define PI 3.14159265f
 #define LERP(A,B,s) ((A)*(1-s)+(B)*s)

@@ -30,7 +30,7 @@ bool MeshSampler::writeChunk()
 {
 	bool res;
 	res = plyUpdateHeader(m_output, m_total_samples);
-	res *= plyAppendPoints(m_output, m_attribs, m_vertices, m_colors, m_normals);
+	res *= plyAppendPoints(m_output, m_attribs, &m_vertices, &m_colors, &m_normals);
 	m_vertices.clear();
 	m_colors.clear();
 	m_normals.clear();
@@ -139,7 +139,6 @@ bool MeshSampler::sample()
 		return false;
 	}
 
-	
 	printf("done.\n");
 
 }

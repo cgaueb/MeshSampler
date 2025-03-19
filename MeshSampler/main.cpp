@@ -10,6 +10,8 @@ void printHelp()
 	printf("             in an out-of-core manner, to support very large numbers of\n");
 	printf("             samples. Results are written to a PLY file with an extension\n");
 	printf("             \".sampled.ply\".\n");
+	printf("             Double the disk space occupied by the final PLY file is required\n");
+	printf("             during operation.\n");
 	printf("\n");
 	printf("filename: an OBJ file to load and sample.\n");
 	printf("Options:\n");

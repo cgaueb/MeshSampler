@@ -66,9 +66,9 @@ bool plyUpdateHeader(std::string filename, size_t count)
 
 
 bool plyAppendPoints(std::string filename, unsigned char mask,
-	const std::vector<glm::vec3> &vertices,
-	const std::vector<glm::vec3> &colors,
-	const std::vector<glm::vec3> &normals)
+	const std::vector<glm::vec3>* vertices,
+	const std::vector<glm::vec3>* colors,
+	const std::vector<glm::vec3>* normals)
 {
 	FILE* fp = nullptr;
 	fopen_s(&fp, filename.c_str(), "ab");
@@ -78,18 +78,20 @@ bool plyAppendPoints(std::string filename, unsigned char mask,
 		return false;
 	}
 	
-	for (size_t i = 0; i < vertices.size(); i++)
+	//fseek(fp, 0, SEEK_END);
+
+	for (size_t i = 0; i < vertices->size(); i++)
 	{
-		if (mask & MASK_VERTICES)
-			fwrite(&(vertices[i]), 3 * sizeof(float), 1, fp);
-		if (mask & MASK_NORMALS)
-			fwrite(&(normals[i]), 3 * sizeof(float), 1, fp);
-		if (mask & MASK_COLORS)
+		if (mask & MASK_VERTICES && vertices)
+			fwrite(&((* vertices)[i]), 3 * sizeof(float), 1, fp);
+		if (mask & MASK_NORMALS && normals)
+			fwrite(&((*normals)[i]), 3 * sizeof(float), 1, fp);
+		if (mask & MASK_COLORS && colors)
 		{
 			unsigned char c[3];
-			c[0] = (unsigned char) (colors[i].r * 255);
-			c[1] = (unsigned char) (colors[i].g * 255);
-			c[2] = (unsigned char) (colors[i].b * 255);
+			c[0] = (unsigned char) ((*colors)[i].r * 255);
+			c[1] = (unsigned char) ((*colors)[i].g * 255);
+			c[2] = (unsigned char) ((*colors)[i].b * 255);
 			fwrite(c, 3, 1, fp);
 		}
 
