@@ -4,7 +4,7 @@ MeshSampler [OPTIONS] filename
 
 ### Description 
 
-Samples an input mesh and generates and stores surface samples in an out-of-core manner, to support very large numbers of samples. Results are written to a PLY file with an extension ".sampled.ply". Double the disk space occupied by the final PLY file is required during operation.
+Samples an input mesh and generates and stores surface samples in an out-of-core manner, to support very large numbers of samples. Results are written to a PLY file with an extension ".sampled.ply". 
 	
 **filename**: an OBJ file to load and sample.
 
@@ -12,11 +12,11 @@ Samples an input mesh and generates and stores surface samples in an out-of-core
 
 **-s NUMBER**: number of samples to draw. Default is 1000000.
 
-**-m MEMORY**: maximum memory to use for the sample storage in Mbytes. Default is 64 (Mbytes). More memory -> fewer disk accesses to append chunks of samples to file.\n");
+**-m MEMORY**: maximum memory to use for the sample storage in Mbytes. Default is 64 (Mbytes). More memory -> fewer disk accesses to append chunks of samples to file.
 
 **-c**:        Additionally, sample colors. Textures are properly sampled, if present.
 
-**-n**:        Additionally, sample normals.\n");
+**-n**:        Additionally, sample normals.;
 
 **-f FILTER**: Texture sampling magnification filter. FILTER:
 
